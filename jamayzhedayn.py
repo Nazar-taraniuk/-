@@ -2,13 +2,11 @@ lst = [1,2,3,4,5,6,3,4,5,7,6,5,4,3,4,5,4,3, 'Привіт', "анаконда"]
 print("Лист до форматування ", lst)
 temp_str_list = []
 temp_int_list = []
-k = set()
 def remove_duplicates(a):
     temp_list = []
     for i in a:
-        if i not in k:
+        if i not in temp_list:
             temp_list.append(i)
-            k.add(i)
     return temp_list
 
 
@@ -21,13 +19,15 @@ def counting(lst_for_counting):
     return temp_int_list, temp_str_list
 
 
-def sortsis(lst_for_sort):
-    sorted = [item.lower() if type(item) == str else item for item in lst_for_sort]
+def sortsis(lst_str_for_sort, lst_int_for_sort):
+    sorted = [item.lower() if type(item) == str else item for item in lst_str_for_sort]
     sorted.sort()
-    return temp_int_list + sorted
+    lst_int_for_sort.sort()
+    return lst_int_for_sort + sorted
 
 
 temp_lst = remove_duplicates(a=lst)
-lst_for_counting, lst_for_dayn = counting(temp_lst)
-u = sortsis(lst_for_dayn)
-print(u)
+temp_int_list, temp_str_list = counting(temp_lst)
+sortt = sortsis(temp_str_list, temp_int_list)
+print(sortt)
+
